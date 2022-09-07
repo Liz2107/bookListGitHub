@@ -3,6 +3,8 @@ if(isset($_POST["mytext"]))
 {
     $mytext = "";
 	$file = "defaultList1.txt";
+    //POST gets it from the specific form I need, this won't work on a local server because secutiy protocol
+    //Need to upload this, since python also apparently has the same issues
     //changed thing inside post to specific dropdown- if this fails revert to general form name
     $text3 = $_POST["text_area"];
     $title = $_POST["title"];
