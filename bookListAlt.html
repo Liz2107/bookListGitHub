@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reading List</title>
+        <style>
+      .container 
+      {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      img 
+      {
+        /* max-width: 100% */
+        min-width: 150px;
+        min-height: 250px;
+        max-width: 155px;
+        max-height: 270px;
+      }
+      .image 
+      {
+        flex-basis: 25%;
+        padding-right: 40px;
+      }
+      .text 
+      {
+        font-size: 130%;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font: 1em Georgia;
+        padding-left: 15px;
+      }
+      fieldset
+      {
+          border: 2px solid #04417e;/*rgb(83, 83, 83); */
+          border-radius: 11px;
+          margin-top: 4%;
+          margin-left: 2%;
+          margin-right: 2%;
+          background-color: #c8b282;
+      }
+      legend
+      {
+          font-size: 40px;
+          font: 2em Georgia;
+      }
+      h1
+      {
+          text-align: center;
+          font: 2.5em Georgia;
+          margin-top: 0px;
+      }
+      #topDates
+      {
+          text-align: center;
+      }
+      body
+      {
+          background-color: #d0c59a;
+          margin: 0px;
+          margin-top: 0px;
+        /* background-color: #e2c99b; */
+      }
+      nav
+      {
+          margin: 0px;
+          padding: 0px;
+          /* background-color: #104730; */
+          background-color: #04417e;
+          color: aa6c39;
+      }
+      .dgold
+      {
+          /* color: #c8b282; */
+          color: #d0c59a;
+      }
+      #header
+      {
+          display: inline;
+      }
+      #pacingChart
+      {
+          align-items: center;
+          text-align: center;
+         /* margin-left: 90px; */
+      }
+      #bookTitle
+      {
+          font-style: italic;
+      }
+      #makeInline
+      {
+          display: inline-block;
+      }
+      form
+      {
+          font-size: larger;
+      }
+      .textBoxSm
+      {
+          width: 250px;
+          height: 15px;
+      }
+      .textBoxXs
+      {
+          width: 50px;
+          height: 15px;
+      }
+      .textBoxLg
+      {
+          width: 780px;
+          height: 140px;
+      }
+      .textBoxMd
+      {
+          width: 780px;
+          height: 70px;
+      }
+      select
+      {
+          margin-top: 7px;
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          font: Georgia;
+          font-size: large;
+      }
+      .save
+      {
+          font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+          font: Georgia;
+          font-size: large;
+      }
+        </style>
+    </head>
+    <body>
+        <nav>
+        <br>
+        <h1 class="dgold"><u>Summer Book List</u></h1>
+        <h2 id="topDates" class="dgold">5/15-8/15</h2>
+        <br>
+        </nav>
+        <form id="mainForm">
+            
+        </form>
+        <fieldset>
+        <div id="stats">
+            <p id="totalBooks">Total Books: 0</p>
+            <p id="avgRating">Average Rating: 0.0</p>
+            <p id="percentFiction">Percent Nonfiction: 0%</p>
+            <p id="percentRereads">Percent Rereads: 0%</p>
+            <p id="percentSeries">Percent Series: 0%</p>
+            <div id="makeInline">
+                <span>Total Pages: </span>
+                <span id="pageCount">0</span>
+            </div>
+            <br><br>
+            <div id="genreChart"></div>
+            <div id="moodChart"></div>
+            <div id="pacingChart"></div>
+            <div id="decadesChart"></div>
+        </div>
+        </fieldset>
+        <div class="fieldsetToCenter">
+            <fieldset>
+                <legend>Add Book:</legend>
+                
+            <form action="save1.php" method="post" name="myform" accept-charset=utf-8>
+                        <label>Title:</label><br>
+                        <textarea class="textBoxSm" name="title" required></textarea>
+                        <br><br>
+                        <label>Author:</label><br>
+                        <textarea class="textBoxSm" name="author" required></textarea>
+                        <br><br>
+                        <label>Rating:</label><br>
+                        <textarea class="textBoxXs" name="rating" required></textarea>
+                        <br><br>
+                        <label>Comments:</label><br>
+                        <textarea class="textBoxLg" name="comments" required></textarea>
+                        <br><br>
+                        <label>Quote:</label><br>
+                        <textarea class="textBoxMd" name="quote" required></textarea>
+                        <br><br>
+                        <label>Genre:</label> <br>
+                        <input type="checkbox" class="bigCkbx" name="Nonfiction" value="Nonfiction"><label>Nonfiction</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Literary" value="Literary"><label>Literary</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Contemporary" value="Contemporary"><label>Contemporary</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Historical" value="Historical"><label>Historical</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Fantasy" value="Fantasy"><label>Fantasy</label><br>
+                        <input type="checkbox" name="Thriller" class="bigCkbx" value="Thriller"><label>Thriller</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Science" value="Science"><label>Science</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Nature" value="Nature"><label>Nature</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Classic" value="Classic"><label>Classic</label><br>
+                        <input type="checkbox" class="bigCkbx" name="ScienceFiction" value="ScienceFiction"><label>Science Fiction</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Dystopian" value="Dystopian"><label>Dystopian</label><br>
+                        <input type="checkbox" class="bigCkbx" name="SpeculativeFiction" value="Speculative Fiction"><label>Speculative Fiction</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Philosophy" value="Philosophy"><label>Philosophy</label><br>
+                        <input type="checkbox" class="bigCkbx" name="MagicalRealism" value="Magical Realism"><label>Magical Realism</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Mystery" value="Mystery"><label>Mystery</label><br>
+                        <input type="checkbox" class="bigCkbx" name="ShortStories" value="Short Stories"><label>Short Stories</label><br>
+                        <input type="checkbox" class="bigCkbx" name="YoungAdult" value="Young Adult"><label>Young Adult</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Politics" value="Politics"><label>Politics</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Romance" value="Romance"><label>Romance</label><br><br>
+                        <label>Moods:</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Emotional" value="Emotional"><label>Emotional</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Reflective" value="Reflective"><label>Reflective</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Adventurous" value="Adventurous"><label>Adventurous</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Sad" value="Sad"><label>Sad</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Mysterious" value="Mysterious"><label>Mysterious</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Informative" value="Informative"><label>Informative</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Dark" value="Dark"><label>Dark</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Challenging" value="Challenging"><label>Challenging</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Tense" value="Tense"><label>Tense</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Funny" value="Funny"><label>Funny</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Hopeful" value="Hopeful"><label>Hopeful</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Lighthearted" value="Lighthearted"><label>Lighthearted</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Inspiring" value="Inspiring"><label>Inspiring</label><br>
+                        <input type="checkbox" class="bigCkbx" name="Relaxing" value="Relaxing"><label>Relaxing</label><br>
+                        <br>
+
+                        <label>Pacing: </label><br>
+                        <select name="pacing" required>
+                            <option value="Fast">Fast</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Slow">Slow</option>
+                        </select>
+                        <br><br>
+                        <input type="checkbox" class="bigCkbx" name="Reread" value="Reread"><label>Reread</label><br>
+                        <br>
+                        <input type="checkbox" class="bigCkbx" name="Series" value="Series"><label>Series</label><br>
+                <!-- the post method won't work unless this text area exists, so it's hidden bc it's useless -->
+                <textarea class="textBox" name="mytext" hidden></textarea>
+                <br>
+                <input type="submit" class="save" value="Submit"/>
+              </form>
+            
+            </fieldset>
+            </div>
+            
+        <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
+        <script>
+            //global vars bc who gives a fuck about security
+            //genres
+            var genreList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var genreRatingList = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+
+            var moodList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var moodRatingList = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+            
+            var decadesList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            var decadesRatingList = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+            var pacingList = [0, 0, 0];
+            var lenList = [0, 0, 0, 0, 0];
+            var pgCtResetable;
+
+            var totalRating = 0;
+            var numBooks = 0;
+            var totalNonfiction = 0;
+            var totalRereads = 0;
+            var totalSeries = 0;
+            // var literary = 0;
+            // var literaryRating = 0;
+            // var contemporary = 0;
+            // var contemporaryRating = 0;
+            // var historical = 0;
+            // var historicalRating = 0;
+            // var fantasy = 0;
+            // var fantasyRating = 0;
+            // var thriller = 0;
+            // var thrillerRating = 0;
+            // var science = 0;
+            // var scienceRating = 0;
+            // var nature = 0;
+            // var natureRating = 0;
+            // var classic = 0;
+            // var classicRating = 0;
+            // var scienceFiction = 0;
+            // var scienceFictionRating = 0;
+            // var dystopian = 0;
+            // var dystopianRating = 0;
+            // var speculativeFictionRating = 0;
+            // var speculativeFiction = 0;
+            // var philosophy = 0;
+            // var philosophyRating = 0;
+            // var magicalRealism = 0;
+            // var magicalRealismRating = 0;
+            // var mystery = 0;
+            // var mysteryRating = 0;
+            // var shortStories = 0;
+            // var shortStoriesRating = 0;
+            // var youngAdult = 0;
+            // var youngAdultRating = 0;
+            // var politics = 0;
+            // var politicsRating = 0;
+            // var romance = 0;
+            // var romanceRating = 0;
+            // //moods
+            // var emotional = 0;
+            // var emotionalRating = 0;
+            // var reflective = 0;
+            // var reflectiveRating = 0;
+            // var adventurous = 0;
+            // var adventurousRating = 0;
+            // var sad = 0;
+            // var sadRating = 0;
+            // var mysterious = 0;
+            // var mysteriousRating = 0;
+            // var informative = 0;
+            // var informativeRating = 0;
+            // var dark = 0;
+            // var darkRating = 0;
+            // var challenging = 0;
+            // var challengingRating = 0;
+            // var tense = 0;
+            // var tenseRating = 0;
+            // var funny = 0;
+            // var funnyRating = 0;
+            // var hopeful = 0;
+            // var hopefulRating = 0;
+            // var lighthearted = 0;
+            // var lightheartedRating = 0;
+            // var inspiring = 0;
+            // var inspiringRating = 0;
+            // var relaxing = 0;
+            // var relaxingRating = 0;
+
+        
+
+
+            //read in the file
+            var allText;
+            var books = [];
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", "defaultList1.txt", true);
+            rawFile.onreadystatechange = function() 
+                {
+                    if (rawFile.readyState === 4) 
+                        {
+                            //get status for all browsers since chrome has to be uNiQuE and waste two hours of my life :(
+                            if(rawFile.status === 200 || rawFile.status == 0)
+                                {
+                                    allText = rawFile.responseText;
+                                    byLines = allText.split(/\r?\n/);
+                                    books.length = byLines.length;
+                                    //console.log(byLines + "len: " + byLines.length);
+                                    for(var i = 0; i < byLines.length; i++)
+                                        {
+                                            //get the major elements
+                                            var tempArr = byLines[i].split("*&*");
+                                            if(tempArr[0] != "")
+                                            {
+                                                //console.log(tempArr);
+                                                books[i] = tempArr;
+                                            }
+                                            
+                                        }
+                                    for(var j = 0; j < books.length; j++)
+                                    {
+                                        if(books[j] != undefined)
+                                        {
+                                            console.log("7" + books[j][7] + "8" + books[j][8]);
+                                            if(books[j][10] == "")
+                                            {
+                                                console.log("fiction");
+                                                displayBook(books[j][0], books[j][1], books[j][2], books[j][3], books[j][4], books[j][5], books[j][6], books[j][7], books[j][8], books[j][9], ""); 
+                                            }
+                                            else
+                                            {
+                                                console.log("nonfiction");
+                                                displayBook(books[j][0], books[j][1], books[j][2], books[j][3], books[j][4], books[j][5], books[j][6], books[j][7], books[j][8], books[j][9], "nonfiction");  
+                                            }
+                                        }
+                                    }
+                                }
+                        }
+                }
+            rawFile.send();
+
+
+
+                // const form = document.createElement("form");
+                // form.setAttribute("id", "mainList");
+                // document.body.appendChild(form);
+            function displayBook(title, author, rating, comments, quote, genres, moods, pacing, reread, series, fictionStatus)
+                {
+                    if(reread !="X")
+                    {
+                        totalRereads ++;
+                    }
+                    if(series != "X")
+                    {
+                        totalSeries ++;
+                    }
+                    //grab the mood/genre stats
+                    tempGenreList = genres.split("*");
+                    for(let k = 0; k < tempGenreList.length; k++)
+                    {
+                        if(tempGenreList[k] != "")
+                        {
+                            genreList[k] ++;
+                            genreRatingList[k] = parseInt(genreRatingList[k]) + parseInt(rating);
+                        }
+                    }
+                    tempMoodList = moods.split("*");
+                    for(let j = 0; j < tempMoodList.length; j++)
+                    {
+                        if(tempMoodList[j] != "")
+                        {
+                            moodList[j] ++;
+                            moodRatingList[j] = parseInt(moodRatingList[j]) + parseInt(rating);
+                        }
+                    }
+                    //console.log(genreList[0]);
+                    //create the fieldset
+                    const fieldset = document.createElement("fieldset");
+                    fieldset.setAttribute("id", "fieldset");
+                    document.getElementById("mainForm").appendChild(fieldset);
+                    //create the conatiners within for CSS
+                    const mainDiv = document.createElement("div");
+                    mainDiv.setAttribute("class", "container");
+                    fieldset.appendChild(mainDiv);
+
+                    const imgDiv = document.createElement("div");
+                    imgDiv.setAttribute("class", "img");
+                    mainDiv.appendChild(imgDiv);
+
+                    const textDiv = document.createElement("div");
+                    textDiv.setAttribute("class", "text");
+                    mainDiv.appendChild(textDiv);
+
+                    //get the image link and page count
+                    const coverImage = document.createElement("img");
+                    imgDiv.appendChild(coverImage);
+
+
+                    console.log("Pacing outside of fetch: " + pacing);
+                    var currentPages = 0;
+                    var query = title.replaceAll(" ", "+");
+                    var imgSrc = "";
+                    let titleURL = ("https://www.googleapis.com/books/v1/volumes?q=" + query + "&maxResults=5&key=AIzaSyCVXKDB9WhOuX_m8XhFQrgBSLr06ZQ69_A");
+                    fetch(titleURL)
+                    .then(response => response.json())
+                    .then(result => 
+                        {
+                            var item = result.items[0];
+                            let imgLink = item.volumeInfo.imageLinks;
+                            let pageCount = item.volumeInfo.pageCount;
+                            let datePublished = item.volumeInfo.publishedDate;
+                            
+                            
+                            if(datePublished != undefined)
+                            {
+                                let yearPublished = datePublished.substring(0, 4);
+                                if(parseInt(yearPublished) < 1900)
+                                {
+                                    decadesList[0] ++;
+                                    decadesRatingList[0] = parseInt(decadesRatingList[0]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1910)
+                                { 
+                                    decadesList[1] ++;
+                                    decadesRatingList[1] = parseInt(decadesRatingList[1]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1920)
+                                { 
+                                    decadesList[2] ++;
+                                    decadesRatingList[2] = parseInt(decadesRatingList[2]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1930)
+                                { 
+                                    decadesList[3] ++;
+                                    decadesRatingList[3] = parseInt(decadesRatingList[3]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1940)
+                                { 
+                                    decadesList[4] ++;
+                                    decadesRatingList[4] = parseInt(decadesRatingList[4]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1950)
+                                { 
+                                    decadesList[5] ++;
+                                    decadesRatingList[5] = parseInt(decadesRatingList[5]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1960)
+                                { 
+                                    decadesList[6] ++;
+                                    decadesRatingList[6] = parseInt(decadesRatingList[6]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1970)
+                                { 
+                                    decadesList[7] ++;
+                                    decadesRatingList[7] = parseInt(decadesRatingList[7]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1980)
+                                { 
+                                    decadesList[8] ++;
+                                    decadesRatingList[8] = parseInt(decadesRatingList[8]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 1990)
+                                { 
+                                    decadesList[9] ++;
+                                    decadesRatingList[9] = parseInt(decadesRatingList[9]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 2000)
+                                { 
+                                    decadesList[10] ++;
+                                    decadesRatingList[10] = parseInt(decadesRatingList[10]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 2010)
+                                { 
+                                    decadesList[11] ++;
+                                    decadesRatingList[11] = parseInt(decadesRatingList[11]) + parseInt(rating);
+                                }
+                                else if(parseInt(yearPublished) < 2020)
+                                { 
+                                    decadesList[12] ++;
+                                    decadesRatingList[12] = parseInt(decadesRatingList[12]) + parseInt(rating);
+                                }
+                                else 
+                                { 
+                                    decadesList[13] ++;
+                                    decadesRatingList[13] = parseInt(decadesRatingList[13]) + parseInt(rating);
+                                }
+                            }
+                            else
+                            {
+                                decadesList[12] ++;
+                                decadesRatingList[12] = parseInt(decadesRatingList[12]) + parseInt(rating);
+                            }
+                            
+                var trace1D = 
+            {
+                x: ["Before 1900", "1900s", "1910s", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"],
+                y: [decadesList[0], decadesList[1], decadesList[2], decadesList[3], decadesList[4], decadesList[5], decadesList[6], decadesList[7], decadesList[8], decadesList[9], decadesList[10], decadesList[11], decadesList[12], decadesList[13]],
+                name: 'Number of Books',
+            marker: {color: 'rgb(4,65,126)'/*'rgb(252, 126, 115)'*/},
+                type: 'bar'
+            };
+
+        var trace2D = 
+            {
+                x: ["Before 1900", "1900s", "1910s", "1920s", "1930s", "1940s", "1950s", "1960s", "1970s", "1980s", "1990s", "2000s", "2010s", "2020s"],
+                y: [decadesRatingList[0]/decadesList[0], decadesRatingList[1]/decadesList[1], decadesRatingList[2]/decadesList[2], decadesRatingList[3]/decadesList[3], decadesRatingList[4]/decadesList[4], decadesRatingList[5]/decadesList[5], decadesRatingList[6]/decadesList[6], decadesRatingList[7]/decadesList[7], decadesRatingList[8]/decadesList[8], decadesRatingList[9]/decadesList[9], decadesRatingList[10]/decadesList[10], decadesRatingList[11]/decadesList[11], decadesRatingList[12]/decadesList[12], decadesRatingList[13]/decadesList[13]],
+                name: 'Average Rating',
+                marker: {color: 'rgb(13,128,191)'/*'rgb(242, 165, 160)'*/},
+                type: 'bar'
+            };
+
+        var dataD = [trace1D, trace2D];
+
+        var layoutD = 
+            {
+                title: 'Time Period',
+                xaxis: {
+                title: "Decades",
+                titlefont: {
+                    size: 16,
+                    color: 'rgb(67, 67, 67)'
+            },    
+                tickfont: {
+                size: 14,
+                color: 'rgb(67, 67, 67)'
+            }},
+            yaxis: 
+            {
+            tickfont: {
+            size: 14,
+            color: 'rgb(67, 67, 67)'
+            }
+            },
+            legend: {
+            x: 50,
+            y: 1.2,
+            bgcolor: 'rgba(208, 197, 154, 0)',
+            bordercolor: 'rgba(16, 71, 48, 0)'
+            }
+            // },
+            // barmode: 'group',
+            // bargap: 0.15,
+            // bargroupgap: 0.1
+            };
+
+            Plotly.newPlot('decadesChart', dataD, layoutD);
+
+
+
+
+
+
+
+
+                            if(imgLink == undefined)
+                            {
+                                imgSrc = "";
+                                coverImage.setAttribute("src", imgSrc);
+                                coverImage.setAttribute("alt", "Cover Unavailable");
+                            }
+                            else
+                            {
+                                imgSrc = imgLink.thumbnail;
+                                coverImage.setAttribute("src", imgSrc);
+                                coverImage.setAttribute("alt", "ERROR");
+                            }
+                            if(pageCount == undefined)
+                            {
+                                pageCount += 300;
+                                lenList[2] ++;
+                            }
+                            else if(parseInt(pageCount) < 200)
+                            {
+                                lenList[0]++;
+                            }
+                            else if(parseInt(pageCount) < 300)
+                            {
+                                lenList[1]++;
+                            }
+                            else if(parseInt(pageCount) < 400)
+                            {
+                                lenList[2]++;
+                            }
+                            else if(parseInt(pageCount) < 500)
+                            {
+                                lenList[3]++;
+                            }
+                            else if(parseInt(pageCount) >= 500)
+                            {
+                                lenList[4]++;
+                            }
+                            pgCtResetable = pageCount;
+                            currentPages = document.getElementById("pageCount").innerHTML;
+                            let pagesInt = parseInt(currentPages) + parseInt(pageCount);
+                            document.getElementById("pageCount").innerHTML = pagesInt;
+                            //console.log(pageCount + " " + currentPages);
+            
+                            console.log("Pacing outside of fetch: " + pacing);
+            if(pacing=="Fast")
+            {
+                pacingList[0] ++;
+            }
+            else if(pacing=="Moderate")
+            {
+                pacingList[1] ++;
+            }
+            else if(pacing=="Slow")
+            {
+                pacingList[2] ++;
+            }
+            else
+            {
+                console.log("pacing didn't work ");
+                pacingList[1]++;
+            }
+
+            
+    var data = [{
+            values: [pacingList[0], pacingList[1], pacingList[2]],
+            labels: ['Fast', 'Moderate', 'Slow' ],
+            domain: {column: 0},
+            name: 'Pacing',
+            textinfo: "label+percent",
+            textposition: "outside",
+            hoverinfo: 'label+percent+name',
+            type: 'pie'
+            },{
+            values: [lenList[0], lenList[1], lenList[2], lenList[3], lenList[4]],
+            labels: ['0-199', '200-299', "300-399", "400-499", "500+"],
+            text: 'Length',
+            textinfo: "label+percent",
+            textposition: "outside",
+            domain: {column: 1},
+            name: 'Length',
+            hoverinfo: 'label+percent+name',
+            type: 'pie'
+            }];
+
+        var layout = {
+            title: 'Pacing                                                                                   Length',
+            annotations: [
+            {
+                font: {
+                size: 20
+                },
+                showarrow: false,
+                text: '',
+                x: 0.201,
+                y: 0.1
+            },
+            {
+                font: {
+                size: 20
+                },
+                showarrow: false,
+                text: '',
+                x: 0.802,
+                y: 0.1
+            }
+            ],
+            // height: 600,
+            // width: 1185,
+            showlegend: false,
+            grid: {rows: 1, columns: 2}
+            };
+
+    Plotly.newPlot('pacingChart', data, layout);
+
+                        })
+                    
+                    //add the info
+                    const bookTitle = document.createElement("h3");
+                    bookTitle.setAttribute("id", "bookTitle");
+                    bookTitle.innerHTML = title;
+                    textDiv.appendChild(bookTitle);
+                    const bookAuthor = document.createElement("h3");
+                    bookAuthor.innerHTML = author;
+                    textDiv.appendChild(bookAuthor);
+
+                    const bookRating = document.createElement("h4");
+                    bookRating.innerHTML = rating + "/3";
+                    textDiv.appendChild(bookRating);
+
+                    const bookComments = document.createElement("p");
+                    bookComments.innerHTML = comments;
+                    textDiv.appendChild(bookComments);
+
+                    const bookQuote = document.createElement("p");
+                    bookQuote.innerHTML = "\"" + quote + "\"";
+                    textDiv.appendChild(bookQuote);    
+                    
+                    
+                    //update stats
+                    numBooks ++;
+                    totalRating = parseInt(totalRating) + parseInt(rating);
+                    avgRating = (parseInt(totalRating))/(parseInt(numBooks));
+                    document.getElementById("totalBooks").innerHTML = "Total Books: " + numBooks;
+                    document.getElementById("avgRating").innerHTML = "Average Rating: " + avgRating.toFixed(2) + "/3";
+                    if(fictionStatus != "")
+                    {
+                        totalNonfiction++;
+                    }
+                    let fictionPercent = (parseInt(totalNonfiction)/parseInt(numBooks)) * 100;
+                    document.getElementById("percentFiction").innerHTML = "Percent Nonfiction: " + fictionPercent.toFixed(2) + "%";
+                    let rereadPercent = (parseInt(totalRereads)/parseInt(numBooks)) * 100;
+                    document.getElementById("percentRereads").innerHTML = "Percent Rereads: " + rereadPercent.toFixed(2) + "%";
+                    let seriesPercent = (parseInt(totalSeries)/parseInt(numBooks)) * 100;
+                    document.getElementById("percentSeries").innerHTML = "Percent Series: " + seriesPercent.toFixed(2) + "%";
+
+
+                    //plot stuff
+                    
+                var trace1 = 
+            {
+                x: ["Literary", "Contemporary", "Historical", "Fantasy", "Thriller", "Science", "Nature", "Classic", "Science Fiction", "Dystopian", "Speculative Fiction", "Philosophy", "Magical Realism", "Mystery", "Short Stories", "Young Adult", "Politics", "Romance"],
+                y: [genreList[0], genreList[1], genreList[2], genreList[3], genreList[4], genreList[5], genreList[6], genreList[7], genreList[8], genreList[9], genreList[10], genreList[11], genreList[12], genreList[13], genreList[14], genreList[15], genreList[16], genreList[17]],
+                name: 'Number of Books',
+            marker: {color: 'rgb(4,65,126)'/*'rgb(252, 126, 115)'*/},
+                type: 'bar'
+            };
+
+        var trace2 = 
+            {
+                x: ["Literary", "Contemporary", "Historical", "Fantasy", "Thriller", "Science", "Nature", "Classic", "Science Fiction", "Dystopian", "Speculative Fiction", "Philosophy", "Magical Realism", "Mystery", "Short Stories", "Young Adult", "Politics", "Romance"],
+                y: [genreRatingList[0]/genreList[0], genreRatingList[1]/genreList[1], genreRatingList[2]/genreList[2], genreRatingList[3]/genreList[3], genreRatingList[4]/genreList[4], genreRatingList[5]/genreList[5], genreRatingList[6]/genreList[6], genreRatingList[7]/genreList[7], genreRatingList[8]/genreList[8], genreRatingList[9]/genreList[9], genreRatingList[10]/genreList[10], genreRatingList[11]/genreList[11], genreRatingList[12]/genreList[12], genreRatingList[13]/genreList[13], genreRatingList[14]/genreList[14], genreRatingList[15]/genreList[15], genreRatingList[16]/genreList[16], genreRatingList[17]/genreList[17]],
+                name: 'Average Rating',
+                marker: {color: 'rgb(13,128,191)'/*'rgb(242, 165, 160)'*/},
+                type: 'bar'
+            };
+
+        var data = [trace1, trace2];
+
+        var layout = 
+            {
+                title: 'Genre',
+                xaxis: {
+                title: "",
+                titlefont: {
+                    size: 16,
+                    color: 'rgb(67, 67, 67)'
+            },    
+                tickfont: {
+                size: 14,
+                color: 'rgb(67, 67, 67)'
+            }},
+            yaxis: 
+            {
+            tickfont: {
+            size: 14,
+            color: 'rgb(67, 67, 67)'
+            }
+            },
+            legend: {
+            x: 50,
+            y: 1.2,
+            bgcolor: 'rgba(208, 197, 154, 0)',
+            bordercolor: 'rgba(16, 71, 48, 0)'
+            }
+            // },
+            // barmode: 'group',
+            // bargap: 0.15,
+            // bargroupgap: 0.1
+            };
+
+            Plotly.newPlot('genreChart', data, layout);
+
+
+
+
+
+            var trace1M = 
+            {
+                x: ["Emotional", "Reflective", "Adventurous", "Sad", "Mysterious", "Informative", "Dark", "Challenging", "Tense", "Funny", "Hopeful", "Lighthearted", "Inspiring", "Relaxing"],
+                y: [moodList[0], moodList[1], moodList[2], moodList[3], moodList[4], moodList[5], moodList[6], moodList[7], moodList[8], moodList[9], moodList[10], moodList[11], moodList[12], moodList[13]],
+                name: 'Number of Books',
+            marker: {color: 'rgb(4,65,126)'/*'rgb(252, 126, 115)'*/},
+                type: 'bar'
+            };
+
+        var trace2M = 
+            {
+                x: ["Emotional", "Reflective", "Adventurous", "Sad", "Mysterious", "Informative", "Dark", "Challenging", "Tense", "Funny", "Hopeful", "Lighthearted", "Inspiring", "Relaxing"],
+                y: [moodRatingList[0]/moodList[0], moodRatingList[1]/moodList[1], moodRatingList[2]/moodList[2], moodRatingList[3]/moodList[3], moodRatingList[4]/moodList[4], moodRatingList[5]/moodList[5], moodRatingList[6]/moodList[6], moodRatingList[7]/moodList[7], moodRatingList[8]/moodList[8], moodRatingList[9]/moodList[9], moodRatingList[10]/moodList[10], moodRatingList[11]/moodList[11], moodRatingList[12]/moodList[12], moodRatingList[13]/moodList[13]],
+                name: 'Average Rating',
+                marker: {color: 'rgb(13,128,191)'/*'rgb(242, 165, 160)'*/},
+                type: 'bar'
+            };
+
+        var dataM = [trace1M, trace2M];
+
+        var layoutM = 
+            {
+                title: 'Mood',
+                xaxis: {
+                title: "",
+                titlefont: {
+                    size: 16,
+                    color: 'rgb(67, 67, 67)'
+            },    
+                tickfont: {
+                size: 14,
+                color: 'rgb(67, 67, 67)'
+            }},
+            yaxis: 
+            {
+            tickfont: {
+            size: 14,
+            color: 'rgb(67, 67, 67)'
+            }
+            },
+            legend: {
+            x: 50,
+            y: 1.2,
+            bgcolor: 'rgba(208, 197, 154, 0)',
+            bordercolor: 'rgba(16, 71, 48, 0)'
+            }
+            // },
+            // barmode: 'group',
+            // bargap: 0.15,
+            // bargroupgap: 0.1
+            };
+
+            Plotly.newPlot('moodChart', dataM, layoutM);
+
+
+
+
+
+        }
+                </script>
+    </body>
+</html>
+
