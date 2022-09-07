@@ -713,7 +713,7 @@
                     textDiv.appendChild(bookAuthor);
 
                     const bookRating = document.createElement("h4");
-                    bookRating.innerHTML = rating + "/3";
+                    bookRating.innerHTML = rating + "/10";
                     textDiv.appendChild(bookRating);
 
                     const bookComments = document.createElement("p");
@@ -730,7 +730,7 @@
                     totalRating = parseInt(totalRating) + parseInt(rating);
                     avgRating = (parseInt(totalRating))/(parseInt(numBooks));
                     document.getElementById("totalBooks").innerHTML = "Total Books: " + numBooks;
-                    document.getElementById("avgRating").innerHTML = "Average Rating: " + avgRating.toFixed(2) + "/3";
+                    document.getElementById("avgRating").innerHTML = "Average Rating: " + avgRating.toFixed(2) + "/10";
                     if(fictionStatus != "")
                     {
                         totalNonfiction++;
